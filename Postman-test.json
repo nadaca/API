@@ -1,0 +1,619 @@
+{
+	"info": {
+		"_postman_id": "music-api-tests-ordonnes-collection",
+		"name": "Music API - Tests Ordonnés",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3005",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "artiste_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "album_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "chanson_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "playlist_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Créer un utilisateur",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Réponse contient un ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.have.property('_id');",
+							"    pm.collectionVariables.set('user_id', jsonData.data._id);",
+							"});",
+							"",
+							"pm.test(\"Utilisateur créé avec les bonnes données\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.nom).to.eql('MEHARZI');",
+							"    pm.expect(jsonData.data.prenom).to.eql('Dalya');",
+							"    pm.expect(jsonData.data.email).to.eql('dmeharzi@esaip.org');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nom\": \"MEHARZI\",\n  \"prenom\": \"Dalya\",\n  \"email\": \"dmeharzi@esaip.org\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "users"]
+				}
+			}
+		},
+		{
+			"name": "2. Créer un artiste",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Réponse contient un ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.have.property('_id');",
+							"    pm.collectionVariables.set('artiste_id', jsonData.data._id);",
+							"});",
+							"",
+							"pm.test(\"Artiste créé avec les bonnes données\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.nom).to.eql('The Beatles');",
+							"    pm.expect(jsonData.data.pays).to.eql('Royaume-Uni');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nom\": \"The Beatles\",\n  \"pays\": \"Royaume-Uni\",\n  \"genre\": \"Rock\",\n  \"biographie\": \"Description\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/artistes",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "artistes"]
+				}
+			}
+		},
+		{
+			"name": "3. Créer un album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Réponse contient un ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.have.property('_id');",
+							"    pm.collectionVariables.set('album_id', jsonData.data._id);",
+							"});",
+							"",
+							"pm.test(\"Album lié à l'artiste\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.artiste).to.have.property('_id');",
+							"    pm.expect(jsonData.data.artiste.nom).to.eql('The Beatles');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"titre\": \"Abbey Road\",\n  \"artiste\": \"{{artiste_id}}\",\n  \"annee\": 1969\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/albums",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "albums"]
+				}
+			}
+		},
+		{
+			"name": "4. Créer une chanson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Réponse contient un ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.have.property('_id');",
+							"    pm.collectionVariables.set('chanson_id', jsonData.data._id);",
+							"});",
+							"",
+							"pm.test(\"Chanson liée à l'album\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.album).to.have.property('_id');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"titre\": \"Come Together\",\n  \"album\": \"{{album_id}}\",\n  \"duree\": 259,\n  \"numero\": 1\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/chansons",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "chansons"]
+				}
+			}
+		},
+		{
+			"name": "5. Créer une playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Réponse contient un ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.have.property('_id');",
+							"    pm.collectionVariables.set('playlist_id', jsonData.data._id);",
+							"});",
+							"",
+							"pm.test(\"Playlist liée à l'utilisateur\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.utilisateur).to.have.property('_id');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nom\": \"Ma playlist rock\",\n  \"utilisateur\": \"{{user_id}}\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/playlists",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "playlists"]
+				}
+			}
+		},
+		{
+			"name": "6. Ajouter chanson à la playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Chanson ajoutée avec succès\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"    pm.expect(jsonData.data.chanson).to.have.property('_id');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"chansonId\": \"{{chanson_id}}\",\n  \"ordre\": 1\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}/chansons",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "playlists", "{{playlist_id}}", "chansons"]
+				}
+			}
+		},
+		{
+			"name": "7. GET - Liste des chansons de l'album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Au moins une chanson dans l'album\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.count).to.be.at.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/albums/{{album_id}}/chansons",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "albums", "{{album_id}}", "chansons"]
+				}
+			}
+		},
+		{
+			"name": "8. GET - Liste des chansons de la playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Au moins une chanson dans la playlist\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.count).to.be.at.least(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}/chansons",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "playlists", "{{playlist_id}}", "chansons"]
+				}
+			}
+		},
+		{
+			"name": "9. GET - Utilisateur par ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Utilisateur récupéré correctement\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.nom).to.eql('MEHARZI');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/{{user_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "users", "{{user_id}}"]
+				}
+			}
+		},
+		{
+			"name": "10. PUT - Modifier utilisateur",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Utilisateur modifié\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.email).to.eql('ndjamai.ing2027@esaip.org');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nom\": \"DJAMAI CAYOL\",\n  \"prenom\": \"Naël\",\n  \"email\": \"ndjamai.ing2027@esaip.org\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users/{{user_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "users", "{{user_id}}"]
+				}
+			}
+		},
+		{
+			"name": "11. DELETE - Retirer chanson de la playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Chanson retirée avec succès\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}/chansons/{{chanson_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "playlists", "{{playlist_id}}", "chansons", "{{chanson_id}}"]
+				}
+			}
+		},
+		{
+			"name": "12. DELETE - Supprimer playlist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Playlist supprimée\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "playlists", "{{playlist_id}}"]
+				}
+			}
+		},
+		{
+			"name": "13. DELETE - Supprimer chanson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Chanson supprimée\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/chansons/{{chanson_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "chansons", "{{chanson_id}}"]
+				}
+			}
+		},
+		{
+			"name": "14. DELETE - Supprimer album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Album supprimé\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/albums/{{album_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "albums", "{{album_id}}"]
+				}
+			}
+		},
+		{
+			"name": "15. DELETE - Supprimer artiste",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Artiste supprimé\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/artistes/{{artiste_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "artistes", "{{artiste_id}}"]
+				}
+			}
+		},
+		{
+			"name": "16. DELETE - Supprimer utilisateur",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code est 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Utilisateur supprimé\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/users/{{user_id}}",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "users", "{{user_id}}"]
+				}
+			}
+		}
+	]
+}

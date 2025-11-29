@@ -1,0 +1,882 @@
+{
+	"info": {
+		"_postman_id": "d653ec78-abd6-4b33-9fe2-0cd2879d10da",
+		"name": "Music API - Tests Complets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40258506"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GET - tous les utilisateurs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Un utilisateur par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Créer un utilisateur",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"{{nom}}\",\n  \"prenom\": \"{{prenom}}\",\n  \"email\": \"{{email}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users?nom=DJAMAI CAYOL&prenom=Naël&email=ndjamai.ing2027@esaip.org",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "nom",
+									"value": "DJAMAI CAYOL"
+								},
+								{
+									"key": "prenom",
+									"value": "Naël"
+								},
+								{
+									"key": "email",
+									"value": "ndjamai.ing2027@esaip.org"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Modifier un utilisateur",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"{{nom}}\",\n  \"prenom\": \"{{prenom}}\",\n  \"email\": \"{{email}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{user_id}}?nom=DJAMAI CAYOL&prenom=Naël&email=ndjamai.ing2027@esaip.org",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							],
+							"query": [
+								{
+									"key": "nom",
+									"value": "DJAMAI CAYOL"
+								},
+								{
+									"key": "prenom",
+									"value": "Naël"
+								},
+								{
+									"key": "email",
+									"value": "ndjamai.ing2027@esaip.org"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Supprimer un utilisateur",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artistes",
+			"item": [
+				{
+					"name": "GET - tous les artistes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/artistes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"artistes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Un artiste par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/artistes/{{artiste_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"artistes",
+								"{{artiste_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Créer un artiste",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"{{artisteNom}}\",\n  \"pays\": \"{{artistePays}}\",\n  \"genre\": \"{{artisteGenre}}\",\n  \"biographie\": \"{{artisteBio}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/artistes?artisteNom=MEHARZI Dalya&artistePays=France&artisteGenre=&artisteBio=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"artistes"
+							],
+							"query": [
+								{
+									"key": "artisteNom",
+									"value": "MEHARZI Dalya"
+								},
+								{
+									"key": "artistePays",
+									"value": "France"
+								},
+								{
+									"key": "artisteGenre",
+									"value": ""
+								},
+								{
+									"key": "artisteBio",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Modifier un artiste",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"{{artisteNom}}\",\n  \"pays\": \"{{artistePays}}\",\n  \"genre\": \"{{artisteGenre}}\",\n  \"biographie\": \"{{artisteBio}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/artistes/{{artiste_id}}?artisteNom=MEHARZI Dalya&artistePays=France&artisteGenre=K-Pop&artisteBio=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"artistes",
+								"{{artiste_id}}"
+							],
+							"query": [
+								{
+									"key": "artisteNom",
+									"value": "MEHARZI Dalya"
+								},
+								{
+									"key": "artistePays",
+									"value": "France"
+								},
+								{
+									"key": "artisteGenre",
+									"value": "K-Pop"
+								},
+								{
+									"key": "artisteBio",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Supprimer un artiste",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/artistes/{{artiste_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"artistes",
+								"{{artiste_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Albums",
+			"item": [
+				{
+					"name": "GET - Liste tous les albums",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Créer un album",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titre\": \"Abbey Road\",\n  \"artiste\": \"692b25cb90fbcada1fd928c5\",\n  \"annee\": 1969\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/albums?albumTitre=Titre&albumAnnee=2026&albumArtiste=692b25cb90fbcada1fd928c5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums"
+							],
+							"query": [
+								{
+									"key": "albumTitre",
+									"value": "Titre"
+								},
+								{
+									"key": "albumAnnee",
+									"value": "2026"
+								},
+								{
+									"key": "albumArtiste",
+									"value": "692b25cb90fbcada1fd928c5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Un album par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Modifier un album",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titre\": \"Nouveau Titre\",\n  \"artiste\": \"692b25cb90fbcada1fd928c5\",\n  \"annee\": 2025\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}?albumTitre=Nouveau Titre&albumArtiste={{artiste_id}}&albumAnnee=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}"
+							],
+							"query": [
+								{
+									"key": "albumTitre",
+									"value": "Nouveau Titre"
+								},
+								{
+									"key": "albumArtiste",
+									"value": "{{artiste_id}}"
+								},
+								{
+									"key": "albumAnnee",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Supprimer un album",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Chansons d'un album",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}/chansons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}",
+								"chansons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Supprimer une chanson d'un album",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}/chansons/{{chanson_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}",
+								"chansons",
+								"{{chanson_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chansons",
+			"item": [
+				{
+					"name": "GET - Liste toutes les chansons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chansons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chansons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Une chanson par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chansons/{{chanson_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chansons",
+								"{{chanson_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Créer une chanson",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titre\": \"{{chansonTitre}}\",\n  \"album\": \"692b2aa20a51819486a8cfc1\",\n  \"duree\": {{chansonDuree}},\n  \"numero\": {{chansonNumero}}\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chansons?chansonTitre=&chansonDuree=&chansonNumero=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chansons"
+							],
+							"query": [
+								{
+									"key": "chansonTitre",
+									"value": ""
+								},
+								{
+									"key": "chansonDuree",
+									"value": ""
+								},
+								{
+									"key": "chansonNumero",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Modifier une chanson",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"titre\": \"{{chansonTitre}}\",\n  \"album\": \"{{album_id}}\",\n  \"duree\": {{chansonDuree}},\n  \"numero\": {{chansonNumero}}\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chansons/{{chanson_id}}?chansonTitre=&chansonDuree=&chansonNumero=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chansons",
+								"{{chanson_id}}"
+							],
+							"query": [
+								{
+									"key": "chansonTitre",
+									"value": ""
+								},
+								{
+									"key": "chansonDuree",
+									"value": ""
+								},
+								{
+									"key": "chansonNumero",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Supprimer une chanson",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chansons/{{chanson_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chansons",
+								"{{chanson_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Playlists",
+			"item": [
+				{
+					"name": "GET - Liste toutes les playlists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Une playlist par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists",
+								"{{playlist_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Créer une playlist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"nom\",\n  \"utilisateur\": \"692b25da90fbcada1fd928c7\",\n  \"chanson\": \"692b31bafe4964ae287a466f\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists?playlistNom=Nom",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists"
+							],
+							"query": [
+								{
+									"key": "playlistNom",
+									"value": "Nom"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Modifier une playlist",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nom\": \"{{playlistNom}}\",\n  \"user\": \"{{user_id}}\",\n  \"chanson\": \"{{chanson_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}?playlistNom=Nom modifié",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists",
+								"{{playlist_id}}"
+							],
+							"query": [
+								{
+									"key": "playlistNom",
+									"value": "Nom modifié"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Supprimer une playlist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists",
+								"{{playlist_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Chansons d'une playlist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}/chansons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists",
+								"{{playlist_id}}",
+								"chansons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Ajouter une chanson à une playlist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"chansonId\": \"\",\n  \"ordre\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}/chansons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists",
+								"{{playlist_id}}",
+								"chansons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Retirer une chanson d'une playlist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/playlists/{{playlist_id}}/chansons/{{chanson_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"playlists",
+								"{{playlist_id}}",
+								"chansons",
+								"{{chanson_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET - Documentation API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3005",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "artiste_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "album_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "chanson_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "playlist_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
